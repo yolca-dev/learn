@@ -1,0 +1,75 @@
+/* 土台: 机・紙・文字・リンク・ヘッダー・フッター。値は全部 tokens.css の変数 */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--s5)}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--f-body);font-size:var(--t3);line-height:var(--lh);font-weight:var(--w-reg)}
+img,svg{max-width:100%}
+a{color:var(--link);text-decoration-thickness:var(--hair);text-underline-offset:var(--s1)}
+a:hover{text-decoration-thickness:var(--bw-2)}
+:focus-visible{outline:var(--bw-2) solid var(--focus);outline-offset:var(--bw)}
+h1,h2,h3{font-family:var(--f-head);font-weight:var(--w-bold);line-height:var(--lh-tight)}
+p,li,dd{max-width:var(--measure)}
+mark{background:linear-gradient(transparent 55%,var(--mark) 55%);color:inherit;padding:0 var(--hair)}
+[lang="en"]{font-family:var(--f-en);letter-spacing:var(--track-en)}
+.vh{position:absolute;width:var(--hair);height:var(--hair);overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:var(--s2);top:calc(var(--s8) * -1);z-index:var(--z-top);background:var(--paper);color:var(--link);padding:var(--s2) var(--s3);border-radius:var(--r-s)}
+.skip:focus{top:var(--s2)}
+
+/* 机と紙: 輪の穴(上の列)と、右上の角の折り返し */
+.desk{display:block;padding:var(--s5) var(--gut) var(--s7);outline:none}
+.sheet{position:relative;max-width:var(--page-max);margin-inline:auto;background:var(--paper);border-radius:var(--r);border-top-right-radius:0;box-shadow:var(--paper-sh);
+  padding:calc(var(--card-pad) + var(--hole) + var(--s3)) var(--card-pad) var(--card-pad)}
+.sheet::before{content:"";position:absolute;top:var(--s4);left:var(--card-pad);right:var(--card-pad);height:var(--hole);
+  background:radial-gradient(circle at calc(var(--hole) / 2) 50%,var(--desk) 0 calc(var(--hole) / 2),transparent calc(var(--hole) / 2 + var(--hair))) 0 0/var(--hole-gap) var(--hole) repeat-x}
+.sheet::after{content:"";position:absolute;top:0;right:0;width:var(--ear);height:var(--ear);background:linear-gradient(var(--ear-angle),var(--desk) 50%,var(--surface) 50%);border-bottom-left-radius:var(--r-s);box-shadow:var(--sh-near)}
+
+/* ヘッダー: 机の上。メニューは紙の見出しの耳(タブ) */
+.site-head{color:var(--desk-ink)}
+.head-in{max-width:var(--wide-max);margin-inline:auto;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);padding:var(--s3) var(--gut) 0}
+.brand{display:flex;align-items:center;gap:var(--s2);margin-right:auto;color:inherit;text-decoration:none;font-family:var(--f-head);font-weight:var(--w-bold);font-size:var(--t4);min-height:var(--tap)}
+.brand-ico .ln{stroke:var(--desk-ink)}
+.gnav{order:5;flex-basis:100%}
+.gnav ul{display:flex;gap:var(--s1);margin:0;padding:0;list-style:none;overflow-x:auto}
+.gnav a{display:flex;align-items:center;min-height:var(--tap);padding:0 var(--s4);border-radius:var(--r) var(--r) 0 0;color:var(--desk-ink);text-decoration:none;font-family:var(--f-head);font-weight:var(--w-bold);font-size:var(--t4);white-space:nowrap}
+.gnav a[aria-current="page"]{background:var(--paper);color:var(--ink)}
+.gnav a:hover{background:var(--tint);color:var(--ink)}
+.hsearch{display:none}
+.hsearch input{min-height:var(--tap);width:calc(var(--s8) * 3.5);padding:0 var(--s4);border:var(--bw) solid var(--rule);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);font:inherit;font-size:var(--t4)}
+.ibtn{display:inline-grid;place-items:center;min-width:var(--tap);min-height:var(--tap);border:0;border-radius:var(--r-pill);background:transparent;color:inherit;cursor:pointer}
+.ibtn .ln{stroke:var(--desk-ink)}
+.hsearch{align-items:center;gap:var(--s1)}
+.theme-btn{display:inline-flex;align-items:center;gap:var(--s1);min-height:var(--tap);padding:0 var(--s3);border:var(--bw) solid var(--desk-ink2);border-radius:var(--r-pill);background:transparent;color:var(--desk-ink);font:inherit;font-size:var(--t5);cursor:pointer}
+.theme-btn .ln,.theme-btn .ac{stroke:var(--desk-ink)}
+.theme-btn .fl{fill:transparent}
+.proto-banner{max-width:none;margin:var(--s2) 0 0;padding:var(--s1) var(--gut);background:var(--chip);color:var(--ink);font-size:var(--t5);text-align:center}
+@media (min-width:768px){
+  .gnav{order:0;flex-basis:auto;align-self:flex-end}
+  .hsearch{display:flex}
+  .hsearch-link{display:none}
+  .head-in{padding-top:var(--s2)}
+}
+
+/* フッター */
+.site-foot{color:var(--desk-ink);padding:var(--s7) var(--gut) calc(var(--s8) + var(--s5));font-size:var(--t5)}
+.foot-in{max-width:var(--wide-max);margin-inline:auto}
+.foot-links,.foot-pillars{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);margin:0 0 var(--s3);padding:0;list-style:none}
+.site-foot a{color:var(--desk-ink);display:inline-flex;align-items:center;min-height:var(--tap)}
+.foot-tm,.foot-c{margin:var(--s1) 0;color:var(--desk-ink2)}
+
+/* 上へ戻る(画面の右下) */
+.totop{position:fixed;right:var(--gut);bottom:var(--gut);z-index:var(--z-top);display:inline-flex;align-items:center;min-height:var(--tap);padding:0 var(--s4);border-radius:var(--r-pill);background:var(--paper);color:var(--link);box-shadow:var(--paper-sh-s);font-size:var(--t4);font-weight:var(--w-bold);text-decoration:none}
+html.js .totop{visibility:hidden}
+html.js .totop.show{visibility:visible}
+
+/* パンくず */
+.crumbs{font-size:var(--t5);color:var(--ink2);margin-bottom:var(--s3)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:0 var(--s1);margin:0;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";margin-right:var(--s1);color:var(--ink2)}
+.crumbs a{color:var(--ink2)}
+
+/* ボタン */
+.btn{display:inline-flex;align-items:center;gap:var(--s2);min-height:var(--tap);padding:0 var(--s5);border:var(--bw) solid var(--btn);border-radius:var(--r-pill);background:var(--btn);color:var(--on-btn);font:inherit;font-weight:var(--w-bold);text-decoration:none;cursor:pointer}
+.btn .ln,.btn .ac{stroke:var(--on-btn)}
+.btn .fl{fill:transparent}
+.btn-ghost{background:transparent;color:var(--link)}
+.btn-ghost .ln,.btn-ghost .ac{stroke:var(--link)}
+.foot-app{margin:0 0 var(--s3);display:flex;flex-wrap:wrap;align-items:center;gap:0 var(--s3)}

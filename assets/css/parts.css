@@ -1,0 +1,252 @@
+/* 部品の見た目(templates/parts.html の部品と 1 対 1)。値は全部 tokens.css の変数 */
+
+/* 絵(SVG)の塗り */
+.ln{fill:none;stroke:var(--ink);stroke-width:var(--bw-2);stroke-linecap:round;stroke-linejoin:round}
+.ac{fill:none;stroke:var(--fig);stroke-width:var(--bw-2);stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:var(--fig-fill)}
+.pp{fill:var(--paper)}
+.dk{fill:var(--ink)}
+.mk,.mk2{fill:var(--mark)}
+.mk2{stroke:var(--ink);stroke-width:var(--bw)}
+.tape{fill:var(--mark);opacity:var(--tape-op)}
+.ic-n,.ic-s{font-family:var(--f-en);font-weight:var(--w-bold);fill:var(--ink)}
+.ic-n{font-size:var(--t2)}
+.ic-s{font-size:var(--t4)}
+.ico{display:inline-block;vertical-align:middle;flex:none}
+
+/* 題名のまわり */
+.hero{margin-bottom:var(--s3)}
+.kind-tag{margin:0;font-family:var(--f-hand);font-weight:var(--w-hand);font-size:var(--t3);color:var(--hand)}
+.title{margin:var(--s1) 0 var(--s2);font-size:var(--t1)}
+.title[lang="en"]{font-family:var(--f-en);font-weight:var(--w-bold)}
+.title-phrase{font-size:var(--t2)}
+.title small{display:block;font-size:var(--t4);color:var(--ink2);font-weight:var(--w-reg)}
+@media (min-width:768px){.title-phrase{font-size:var(--t1)}}
+.pron{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1) var(--s3);margin:0;color:var(--ink2);font-size:var(--t4)}
+.oneline{margin:var(--s2) 0 var(--s3);font-family:var(--f-head);font-weight:var(--w-bold);font-size:var(--t2);line-height:var(--lh-tight)}
+.literal{margin:0;color:var(--ink2);font-size:var(--t4)}
+.lbl{display:inline-block;margin-right:var(--s2);padding:0 var(--s2);border-radius:var(--r-s);background:var(--chip);color:var(--ink);font-size:var(--t5);font-weight:var(--w-bold)}
+
+/* 写真の枠(試作では絵) */
+.photo{margin:0 0 var(--s2);max-width:var(--fig-max)}
+.photo-svg{display:block;width:100%;height:auto;max-height:var(--photo-h)}
+.photo-edge{stroke:var(--ink2);stroke-width:var(--bw)}
+.photo figcaption{font-size:var(--t5);color:var(--ink2);text-align:right}
+
+/* 目次 */
+.toc ul{display:flex;flex-wrap:wrap;gap:var(--s2);margin:var(--s3) 0 0;padding:0;list-style:none}
+.toc a{display:inline-flex;align-items:center;min-height:var(--tap);padding:0 var(--s3);border:var(--bw) solid var(--rule);border-radius:var(--r-pill);color:var(--ink);text-decoration:none;font-size:var(--t4)}
+.toc a:hover{border-color:var(--link)}
+
+/* 節: 見出しはタブ */
+.sec{margin-top:var(--sec-gap)}
+.sec-thin{margin-top:var(--s5)}
+.tab{display:inline-block;margin:0;padding:var(--s2) var(--s4);border-radius:var(--r) var(--r) 0 0;background:var(--tab);font-size:var(--t2)}
+.sec-body{border-top:var(--bw-2) solid var(--tab);padding-top:var(--s4)}
+.sec-body>p:first-child{margin-top:0}
+.h3{margin:var(--s5) 0 var(--s2);font-size:var(--t3)}
+.note{font-size:var(--t4);color:var(--ink2)}
+.muted{color:var(--ink2);font-size:var(--t4)}
+
+/* 音声のボタン */
+.say{display:inline-flex;flex-wrap:wrap;gap:var(--s1)}
+.say-btn{display:inline-flex;align-items:center;gap:var(--s1);min-height:var(--tap);padding:0 var(--s3);border:var(--bw) solid var(--rule);border-radius:var(--r-pill);background:var(--paper);color:var(--link);font:inherit;font-size:var(--t4);cursor:pointer}
+.say-btn .ln{stroke:var(--link)}
+.say-btn .fl{fill:var(--tint)}
+.say-btn:hover{border-color:var(--link)}
+.say-btn[disabled]{color:var(--ink2);cursor:not-allowed}
+.say-btn.is-playing{background:var(--tint)}
+
+/* 会話の吹き出し: A は左・B は右 */
+.dialog{display:grid;gap:var(--s3);margin:var(--s4) 0}
+.bub{display:flex;align-items:flex-start;gap:var(--s2);max-width:var(--bub-max)}
+.bub-b{flex-direction:row-reverse;margin-left:auto}
+.who{flex:none;display:grid;place-items:center;width:var(--s6);height:var(--s6);border-radius:var(--r-pill);background:var(--surface);font-family:var(--f-en);font-weight:var(--w-bold);font-size:var(--t4);color:var(--ink2)}
+.bub-in{padding:var(--s2) var(--s4) var(--s1);border-radius:var(--r-l);background:var(--bub-a)}
+.bub-a .bub-in{border-top-left-radius:var(--r-s)}
+.bub-b .bub-in{background:var(--bub-b);border-top-right-radius:var(--r-s)}
+.bub-en{margin:0;font-weight:var(--w-bold)}
+.bub-ja{margin:0;font-size:var(--t4);color:var(--ink2)}
+
+/* 例文 */
+.exs{list-style:none;padding:0;margin:var(--s3) 0}
+.exs li{margin:var(--s3) 0;padding-left:var(--s3);border-left:var(--bw-2) solid var(--rule)}
+.ex-en{margin:0}
+.ex-ja{margin:0;font-size:var(--t4);color:var(--ink2)}
+
+/* 手書き風のメモ(テープで留めた紙) */
+.memo{position:relative;margin:var(--s4) 0;padding:var(--s4) var(--s4) var(--s3);border-radius:var(--r-s);background:var(--surface)}
+.memo::before{content:"";position:absolute;top:calc(var(--s2) * -1);left:var(--s5);width:var(--s8);height:var(--s4);background:var(--mark);opacity:var(--tape-op);transform:rotate(var(--tilt-a))}
+.memo p{margin:0;font-family:var(--f-hand);font-weight:var(--w-hand)}
+.memo strong{margin-right:var(--s2);color:var(--ink)}
+
+/* 準備中・仮 */
+.wip{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);color:var(--ink2);font-size:var(--t4)}
+.wip-tag,.tent{display:inline-block;padding:0 var(--s2);border:var(--bw) dashed var(--ink2);border-radius:var(--r-pill);font-size:var(--t5);color:var(--ink2);font-weight:var(--w-reg);line-height:var(--lh)}
+.tent{margin-left:var(--s1)}
+
+/* 動画の枠(準備中) */
+.video-slot{display:grid;place-items:center;align-content:center;gap:var(--s2);aspect-ratio:16/9;max-width:var(--fig-max);border:var(--bw) dashed var(--rule);border-radius:var(--r);background:var(--surface);color:var(--ink2)}
+.video-slot p{margin:0;font-size:var(--t4)}
+.video-play{width:var(--icon-l);height:var(--icon-l);background:var(--rule);clip-path:polygon(25% 15%,85% 50%,25% 85%)}
+
+/* レベル */
+.levels{display:flex;flex-wrap:wrap;gap:var(--s3);margin:0}
+.levels div{padding:var(--s2) var(--s4);border-radius:var(--r-s);background:var(--surface)}
+.levels dt{font-size:var(--t5);color:var(--ink2)}
+.levels dd{margin:0;font-weight:var(--w-bold)}
+.levels small{margin-left:var(--s1);font-size:var(--t5);color:var(--ink2);font-weight:var(--w-reg)}
+
+/* 意味の一覧 */
+.means{margin:0;padding-left:var(--s5)}
+.means li{margin:var(--s1) 0}
+.pos-chip{display:inline-block;margin-right:var(--s2);padding:0 var(--s2);border-radius:var(--r-pill);background:var(--chip);font-size:var(--t5)}
+
+/* 語源の絵・ことばの旅 */
+.fig{margin:var(--s4) 0;max-width:var(--fig-max)}
+.parts-svg{display:block;width:100%;height:auto}
+.part-card{fill:var(--surface);stroke:var(--rule);stroke-width:var(--bw)}
+.result-card{fill:var(--fig-fill);stroke:var(--fig);stroke-width:var(--bw)}
+.fig-en{font-family:var(--f-en);font-weight:var(--w-bold);fill:var(--ink)}
+.fig-ja{font-family:var(--f-head);font-weight:var(--w-bold);fill:var(--ink)}
+.fig-op{font-family:var(--f-en);font-weight:var(--w-bold);fill:var(--ink2)}
+.fig-arrow{fill:none;stroke:var(--ink2);stroke-width:var(--bw-2);stroke-linecap:round;stroke-linejoin:round}
+.journey{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s6);margin:var(--s4) 0;padding:0;list-style:none}
+.journey li{position:relative;display:flex;flex-direction:column;padding:var(--s2) var(--s3);border-radius:var(--r);background:var(--surface)}
+.journey li:not(:last-child)::after{content:"→";position:absolute;right:calc(var(--s5) * -1);top:50%;transform:translateY(-50%);color:var(--ink2)}
+.j-lang,.j-m{font-size:var(--t5);color:var(--ink2)}
+.j-form{font-weight:var(--w-bold)}
+
+/* 出典 */
+.srcs{margin-top:var(--s4);font-size:var(--t5);color:var(--ink2)}
+.srcs-h{margin:0 0 var(--s1);font-size:var(--t4)}
+.srcs ul{margin:0;padding-left:var(--s4)}
+
+/* 表 */
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t4)}
+.tbl th,.tbl td{padding:var(--s2);border-bottom:var(--bw) solid var(--rule);text-align:left;vertical-align:top}
+.tbl th{background:var(--surface)}
+
+/* 仲間 */
+.kin-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s1) var(--s2)}
+.part-chip{padding:0 var(--s3);border-radius:var(--r-pill);background:var(--tint);color:var(--ink);font-weight:var(--w-bold);text-decoration:none}
+.syn div{margin:var(--s3) 0}
+.syn dt{font-weight:var(--w-bold)}
+.syn dd{margin:0}
+.classic{margin:0;padding-left:var(--s3);border-left:var(--bw-2) solid var(--deco)}
+
+/* 確認クイズ */
+.qz{margin:0 0 var(--s4);padding:var(--s3) var(--s4) var(--s4);border:var(--bw) solid var(--rule);border-radius:var(--r)}
+.qz legend{padding:0 var(--s2);font-weight:var(--w-bold)}
+.qz-n{margin-right:var(--s2);font-family:var(--f-hand);font-weight:var(--w-hand);color:var(--hand)}
+.qz-en{margin:0 0 var(--s2)}
+.qz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(calc(var(--s8) * 2.4),1fr));gap:var(--s2)}
+.qz-opt{min-height:var(--tap);padding:var(--s2) var(--s3);border:var(--bw) solid var(--rule);border-radius:var(--r-s);background:var(--paper);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.qz-opt:hover{border-color:var(--link)}
+.qz-opt.is-ok{border-color:var(--ok);background:var(--tint)}
+.qz-opt.is-ng{border-color:var(--ng);color:var(--ng)}
+.qz-res{margin:var(--s2) 0 0;font-weight:var(--w-bold)}
+.qz-res.ok{color:var(--ok)}
+.qz-res.ng{color:var(--ng)}
+.qz-why{margin-top:var(--s2);font-size:var(--t4)}
+.qz-why summary{display:inline-flex;align-items:center;min-height:var(--tap);color:var(--link);cursor:pointer}
+
+/* よくある質問 */
+.faq-i{border-bottom:var(--bw) solid var(--rule)}
+.faq-i summary{display:flex;align-items:center;gap:var(--s2);min-height:var(--tap);padding:var(--s2) 0;font-weight:var(--w-bold);cursor:pointer;list-style:none}
+.faq-i summary::-webkit-details-marker{display:none}
+.faq-i p{margin:0 0 var(--s3)}
+.faq-q{font-family:var(--f-hand);font-weight:var(--w-hand);font-size:var(--t2);color:var(--hand)}
+
+/* 出口: 発音と Memoreo */
+.exits{display:grid;gap:var(--s3);margin-top:var(--sec-gap)}
+.exit{display:flex;align-items:center;gap:var(--s3);padding:var(--s4);border-radius:var(--r);background:var(--surface);color:var(--ink);text-decoration:none}
+.exit strong{display:block}
+.exit small{display:block;font-size:var(--t5);color:var(--ink2)}
+.stores{display:flex;flex-wrap:wrap;gap:0 var(--s4)}
+.stores a{display:inline-flex;align-items:center;min-height:var(--tap)}
+@media (min-width:768px){.exits{grid-template-columns:1fr 1fr}}
+
+/* 前後のページ・関連 */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--sec-gap)}
+.pn-a{display:flex;flex-direction:column;padding:var(--s3) var(--s4);border:var(--bw) solid var(--rule);border-radius:var(--r);color:var(--ink);text-decoration:none}
+.pn-a:hover{border-color:var(--link)}
+.pn-a small{font-size:var(--t5);color:var(--ink2)}
+.pn-a span{font-weight:var(--w-bold)}
+.pn-next{grid-column:2;text-align:right}
+.rel{margin-top:var(--s6)}
+.rel-h{margin:0 0 var(--s2);font-family:var(--f-hand);font-weight:var(--w-hand);font-size:var(--t3);color:var(--hand)}
+.rel ul,.more{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.rel a,.more a{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 var(--s3);min-height:var(--tap);align-items:center;padding:var(--s2) 0;border-bottom:var(--bw) dashed var(--rule);color:var(--ink);text-decoration:none}
+.rel a span,.more a span{font-weight:var(--w-bold)}
+.rel small,.more small{color:var(--ink2);font-size:var(--t4)}
+
+/* めくれるカード(表に英語・裏に意味)。罫線の入った単語カード */
+.flip{perspective:calc(var(--s8) * 15)}
+.flip-in{position:relative;height:var(--flip-h);transform-style:preserve-3d;transition:transform var(--dur-flip) var(--ease)}
+.flip.is-flipped .flip-in{transform:rotateY(var(--flip-turn))}
+.flip-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s2);padding:var(--s4);border-radius:var(--r);border-top:var(--bw-2) solid var(--deco);text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--paper) repeating-linear-gradient(to bottom,transparent 0 calc(var(--s6) - var(--hair)),var(--surface) calc(var(--s6) - var(--hair)) var(--s6));box-shadow:var(--paper-sh-s)}
+.flip-back{transform:rotateY(var(--flip-turn));background-color:var(--surface)}
+.flip-word{margin:0;font-weight:var(--w-bold);font-size:var(--t2);line-height:var(--lh-tight)}
+.flip-sub{margin:0;font-size:var(--t4);color:var(--ink2)}
+.flip-mean{margin:0;font-family:var(--f-head);font-weight:var(--w-bold);font-size:var(--t2);line-height:var(--lh-tight)}
+.flip-link{display:inline-flex;align-items:center;min-height:var(--tap);font-weight:var(--w-bold)}
+.flip-btn{display:none;margin:var(--s3) auto 0;min-height:var(--tap);padding:0 var(--s5);border:var(--bw) solid var(--btn);border-radius:var(--r-pill);background:transparent;color:var(--link);font:inherit;font-weight:var(--w-bold);cursor:pointer}
+html.js .flip-btn{display:flex}
+html:not(.js) .flip-in{height:auto;display:grid;gap:var(--s2)}
+html:not(.js) .flip-face{position:static;transform:none;min-height:var(--flip-h)}
+
+/* 英検の表記 */
+.tm-note{margin:var(--s4) 0;padding:var(--s2) var(--s3);border:var(--bw) solid var(--rule);border-radius:var(--r-s);font-size:var(--t5);color:var(--ink2)}
+.tm-note p{margin:0}
+
+/* 一覧の 1 行(罫線のノート) */
+.ruled{margin:0;padding:0;list-style:none}
+.ruled-row a{display:grid;grid-template-columns:1fr auto;grid-template-areas:"w lv" "m m";gap:0 var(--s3);align-items:baseline;min-height:var(--tap);padding:var(--s2) 0;border-bottom:var(--bw) solid var(--rule);color:var(--ink);text-decoration:none}
+.ruled-row a:hover .r-word{text-decoration:underline}
+.r-word{grid-area:w;font-weight:var(--w-bold)}
+.r-pos{display:none;font-size:var(--t5);color:var(--ink2)}
+.r-mean{grid-area:m;font-size:var(--t4);color:var(--ink2)}
+.r-lv{grid-area:lv;font-size:var(--t5);color:var(--ink2)}
+.r-lv small{margin-left:var(--s1);font-size:inherit}
+.r-split{display:none}
+@media (min-width:768px){
+  .ruled-row a{grid-template-columns:minmax(calc(var(--s8) * 2.6),auto) calc(var(--s8) * 1.4) 1fr auto;grid-template-areas:"w p m lv"}
+  .r-pos{display:block;grid-area:p}
+  .r-split{display:block;grid-area:p;font-size:var(--t4)}
+}
+
+/* PC 幅: 題名の左、絵を右に(単語のページだけ。コラムは題名が長いので縦に積む) */
+@media (min-width:768px){
+  .k-word .hero:has(.photo){display:grid;grid-template-columns:1fr minmax(0,var(--fig-max));column-gap:var(--s5);align-items:start}
+  .k-word .hero:has(.photo)>*{grid-column:1}
+  .k-word .hero:has(.photo) .photo{grid-column:2;grid-row:1 / span 6}
+}
+
+/* 2026-10-28 分析にもとづく追加: 最初の画面のレベルの札・頻度の丸・例文の出典・ページ末の回遊・日本人がよく間違える点 */
+.lvchips{display:flex;flex-wrap:nowrap;gap:var(--s2);margin:0 0 var(--s3);padding:0;list-style:none;font-size:var(--t5)}
+.lvchips li{display:inline-flex;align-items:center;gap:var(--s1);padding:var(--s1) var(--s3);border-radius:var(--r-pill);background:var(--chip);color:var(--ink)}
+.lv-k{color:var(--ink2)}
+.dots{display:inline-flex;gap:var(--s1);vertical-align:middle}
+.dots i{display:block;box-sizing:border-box;width:var(--s2);height:var(--s2);border:var(--bw) solid var(--ink2);border-radius:var(--r-pill)}
+.dots i.on{background:var(--ink2)}
+.levels dd .dots{margin-right:var(--s2)}
+.credit{margin:var(--s1) 0 0;font-size:var(--t5);color:var(--ink2)}
+.credit a{color:var(--link)}
+.src-tag{margin-left:var(--s2);font-size:var(--t5);color:var(--ink2);font-weight:var(--w-reg)}
+.qline{margin:0 0 var(--s3);font-family:var(--f-head);font-weight:var(--w-bold)}
+.wander{margin-top:var(--s5)}
+.wander-h{margin:0 0 var(--s2);font-family:var(--f-hand);font-weight:var(--w-hand);font-size:var(--t3);color:var(--hand)}
+.wander-l{display:flex;flex-wrap:wrap;gap:var(--s2);margin:0;padding:0;list-style:none}
+.wander-l a{display:inline-flex;align-items:center;min-height:var(--tap);padding:0 var(--s3);border:var(--bw) solid var(--rule);border-radius:var(--r-pill);color:var(--ink);text-decoration:none}
+.wander-l a:hover{border-color:var(--link)}
+.wander-back{margin:var(--s3) 0 0}
+.mist2-dl{margin:var(--s2) 0 0}
+.mist2-dl>div{display:grid;grid-template-columns:minmax(var(--s8),auto) 1fr;gap:var(--s3);padding:var(--s2) 0;border-bottom:var(--bw) dashed var(--rule)}
+.mist2-dl dt{color:var(--ink2);font-size:var(--t5)}
+.mist2-dl dd{margin:0}
+.mist2-en{display:block;font-weight:var(--w-bold)}
+.mist2-ja{display:block;color:var(--ink2)}
+.more-ex{margin-top:var(--s3)}
+.more-ex summary{display:flex;align-items:center;min-height:var(--tap);cursor:pointer;color:var(--link);font-weight:var(--w-bold)}
