@@ -21,17 +21,33 @@
     });
   }
 
-  /* 読み上げ(ブラウザの音声。試作では録音は無い) */
-  var synth = window.speechSynthesis;
-  $$('[data-say]').forEach(function (b) {
-    if (!synth) { b.disabled = true; b.title = L.no_speech; return; }
+  /* 読み上げ: Kokoro で前もって作った音声ファイル(2026-11-04)。ゆっくりは同じファイルを data-rate の速さで鳴らす(音の高さは変えない)。
+     1 つ鳴らすと、鳴っている前のものは止める */
+  var playing = null;
+  function stopPlaying() {
+    if (!playing) return;
+    playing.audio.pause();
+    playing.btn.classList.remove('is-playing');
+    playing = null;
+  }
+  $$('[data-audio]').forEach(function (b) {
     b.addEventListener('click', function () {
-      synth.cancel();
-      var u = new SpeechSynthesisUtterance(b.dataset.say);
-      u.lang = 'en-US'; u.rate = parseFloat(b.dataset.rate || '1');
+      var same = playing && playing.btn === b;
+      stopPlaying();
+      if (same) return;
+      var a = new Audio(b.dataset.audio);
+      var rate = parseFloat(b.dataset.rate || '1');
+      a.preservesPitch = true; a.webkitPreservesPitch = true;
+      a.defaultPlaybackRate = rate; a.playbackRate = rate;
+      a.addEventListener('play', function () { a.playbackRate = rate; });
+      var me = { audio: a, btn: b };
+      var done = function () { b.classList.remove('is-playing'); if (playing === me) playing = null; };
+      a.addEventListener('ended', done);
+      a.addEventListener('error', done);
+      playing = me;
       b.classList.add('is-playing');
-      u.onend = u.onerror = function () { b.classList.remove('is-playing'); };
-      synth.speak(u);
+      var pr = a.play();
+      if (pr && pr.catch) pr.catch(done);
     });
   });
 
