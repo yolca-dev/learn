@@ -1,0 +1,36 @@
+/* A4 プリント(①覚える ②書き込み練習 ③テスト ④こたえ)。画面では紙の見本、印刷では A4 に 1 枚ずつ。値は全部 tokens.css の変数 */
+.print-bar{margin-bottom:var(--s5)}
+.a4{max-width:var(--a4-w);margin:0 auto var(--s5);padding:var(--s5);background:var(--print-paper);color:var(--print-ink);box-shadow:var(--paper-sh);font-size:var(--t4);line-height:var(--lh-tight)}
+.a4-head{display:grid;grid-template-columns:1fr auto;grid-template-areas:"t qr" "n qr";gap:var(--s2) var(--s4);padding-bottom:var(--s3);border-bottom:var(--bw-2) solid var(--print-ink)}
+.a4-ttl{grid-area:t;display:flex;align-items:center;gap:var(--s2);font-family:var(--f-head);font-weight:var(--w-bold);font-size:var(--t3)}
+.a4-n{font-size:var(--t2)}
+.a4-name{grid-area:n;display:flex;align-items:flex-end;gap:var(--s2)}
+.a4-line{flex:1;border-bottom:var(--bw) solid var(--print-ink);min-height:var(--s5)}
+.a4-qr{grid-area:qr;display:grid;place-items:center;align-content:center;width:var(--qr);height:var(--qr);border:var(--bw) dashed var(--print-ink);text-align:center}
+.a4-qr span{font-family:var(--f-en);font-weight:var(--w-bold)}
+.a4-qr small{font-size:var(--print-t-s)}
+.a4-h{margin:var(--s4) 0 var(--s2);font-size:var(--t3)}
+.a4-tbl{width:100%;margin-top:var(--s4);border-collapse:collapse}
+.a4-tbl th,.a4-tbl td{padding:var(--s2);border:var(--bw) solid var(--print-ink);text-align:left}
+.a4-tip{margin:var(--s3) 0;padding:var(--s2) var(--s3);border:var(--bw) dashed var(--print-ink)}
+.a4-tip strong{margin-right:var(--s2)}
+.a4-mist,.a4-ex{margin:0;padding-left:var(--s4)}
+.a4-mist li,.a4-ex li{margin:var(--s1) 0;display:flex;flex-wrap:wrap;gap:0 var(--s3)}
+.a4-mist small,.a4-ex small{flex-basis:100%;color:var(--print-ink)}
+.a4-lead{margin:var(--s3) 0}
+.a4-q{margin:0;padding-left:var(--s5)}
+.a4-q li{min-height:var(--print-row);padding-top:var(--s1);border-bottom:var(--bw) dotted var(--print-ink)}
+.a4-q small{float:right;margin-left:var(--s3);font-size:var(--print-t-s)}
+.a4-en{font-family:var(--f-en)}
+.a4-ans{columns:var(--ans-cols);margin:0;padding-left:var(--s5);font-family:var(--f-en)}
+.a4-score{text-align:right;font-weight:var(--w-bold)}
+.a4-foot{display:flex;justify-content:space-between;margin-top:auto;padding-top:var(--s3);font-size:var(--print-t-s)}
+@page{size:A4;margin:0}
+@media print{
+  .site-head,.site-foot,.totop,.print-bar,.skip{display:none}
+  body,.desk{background:var(--print-paper);padding:0}
+  .a4{width:var(--a4-w);height:var(--a4-h);max-width:none;margin:0;padding:var(--print-m);box-shadow:none;display:flex;flex-direction:column;overflow:hidden;font-size:var(--print-t);break-after:page}
+  .a4:last-of-type{break-after:auto}
+  .a4-ttl{font-size:var(--print-t-l)}
+}
+.a4 p,.a4 li{max-width:none}

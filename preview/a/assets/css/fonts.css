@@ -1,0 +1,6 @@
+/* 書体(SIL OFL 1.1)。ビルドが、ページに出る字だけに絞ったファイルを assets/fonts/ に作る。
+   丸ゴシックと Klee One は日本語の字だけ、Caveat は英数字だけに効かせる(yolca-learn の決まりを引き継ぐ) */
+@font-face{font-family:"Zen Maru Gothic";font-weight:500;font-display:swap;unicode-range:U+3000-30FF,U+4E00-9FFF,U+FF00-FFEF;src:url(../fonts/zen-maru-gothic-500.woff2) format("woff2")}
+@font-face{font-family:"Zen Maru Gothic";font-weight:700;font-display:swap;unicode-range:U+3000-30FF,U+4E00-9FFF,U+FF00-FFEF;src:url(../fonts/zen-maru-gothic-700.woff2) format("woff2")}
+@font-face{font-family:"Klee One";font-weight:600;font-display:swap;unicode-range:U+3000-30FF,U+4E00-9FFF,U+FF00-FFEF;src:url(../fonts/klee-one-600.woff2) format("woff2")}
+@font-face{font-family:"Caveat";font-weight:600;font-display:swap;unicode-range:U+0020-007E;src:url(../fonts/caveat-600.woff2) format("woff2")}

@@ -1,0 +1,136 @@
+/* 見た目の値は、このファイルと looks/<案>.css だけに置く(色・書体・文字の大きさ・行間・余白・角・線・動き・紙の大きさ)。
+   ほかの CSS は var(--…) で参照するだけで、色や大きさを直接書かない(tools/check.py で検査する)。
+   土台: 辞書らしい硬さ(2026-11-04)。白地に黒・強調は 1 色(濃紺か深緑)・見出し語は明朝系・本文は角ゴシック・区切りは細い罫線。
+   紙のカード・輪の穴・手書き風の文字・丸ゴシックは使わない。
+   案の違い(強調の色・詰まり方)は looks/<案>.css が、この後ろで上書きする。どの案を使うかは site.config.json の look。
+   既定は明るい表示。暗い表示はヘッダーのボタンで選んだときだけ(OS の設定には従わない・2026-10-27)。
+   強調の色を使うのは、リンク・ボタン・節の見出しだけ。ほかの CSS は下の「役割」の名前で参照する */
+:root{
+  color-scheme:light;
+  /* 色(明るい表示)。強調の色(--acc・--acc-soft)は looks/<案>.css が決める */
+  --desk:#FFFFFF;          /* ページの地(白) */
+  --desk-ink:#1A1A1A;      /* ヘッダー・フッターの文字 */
+  --desk-ink2:#50565C;
+  --paper:#FFFFFF;         /* 本文の地 */
+  --surface:#F3F4F5;       /* 囲み(表の見出し・出口) */
+  --ink:#1A1A1A;           /* 本文(黒) */
+  --ink2:#50565C;          /* 補足 */
+  --rule:#D3D6DA;          /* 細い罫線(文字には使わない) */
+  --rule-strong:#1A1A1A;   /* 見出し語の下・ヘッダーの下の罫線 */
+  --acc:#1F3A5F;           /* 強調(looks で上書き) */
+  --acc-soft:#E9EDF3;      /* 強調の薄い地(押す所に乗ったとき) */
+  --mark:#E9EDF3;          /* 絵の塗り(蛍光ペンには使わない) */
+  --hl:transparent;        /* 例文の中の見出し語の地(辞書らしく塗らずに太字にする) */
+  --on-acc:#FFFFFF;        /* 強調の上の文字 */
+  --bub-a:#F3F4F5;         /* 吹き出し A(左) */
+  --bub-b:#F3F4F5;         /* 吹き出し B(右) */
+  --ok:#1F5A3A;            /* クイズの正解 */
+  --ng:#8A2A12;            /* クイズの不正解(本文で 4.5:1 以上) */
+  --shade:rgba(0,0,0,.18);
+  /* 役割: 強調の色はリンク・ボタン・節の見出しだけ。札・絵・飾りの線は灰か黒 */
+  --link:var(--acc);
+  --btn:var(--acc);--on-btn:var(--on-acc);
+  --sec-head:var(--acc);   /* 節の見出しの字 */
+  --tab:transparent;       /* 節の見出しの地(辞書では塗らない) */
+  --tint:var(--acc-soft);
+  --focus:var(--acc);
+  --hand:var(--ink2);      /* 小見出し・番号(手書き風にはしない) */
+  --fig:var(--ink2);       /* 絵の 2 本目の線 */
+  --fig-fill:var(--surface);
+  --chip:transparent;      /* 品詞などの札の地(枠だけ) */
+  --chip-line:var(--ink);  /* 札の枠 */
+  --deco:var(--rule);      /* 飾りの線 */
+  --field-line:var(--ink2);/* 入力欄の枠 */
+  /* 影: 使わない */
+  --sh:none;
+  --sh-near:none;
+  --paper-sh:none;
+  --paper-sh-s:none;
+  --stack-sh:0 0 0 var(--hair) var(--rule);
+
+  /* 書体: 見出し語は明朝系(英語は Georgia から)・本文と見出しは角ゴシック。外から読み込まない(端末の書体) */
+  --f-body:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo","Noto Sans JP","Noto Sans CJK JP",sans-serif;
+  --f-head:var(--f-body);
+  --f-word:Georgia,"Times New Roman","Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Noto Serif CJK JP",serif;
+  --f-mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Noto Serif CJK JP",serif;
+  --f-hand:var(--f-body);
+  --f-en:"Helvetica Neue",Arial,"Hiragino Sans","Yu Gothic",sans-serif;
+  --w-reg:400;--w-bold:700;--w-hand:700;--w-word:700;
+
+  /* 文字の大きさ(5 段だけ): 題名 / 節の見出し・一言の意味 / 本文 / 補足・メニュー / 注記・パンくず */
+  --t1:clamp(2.2rem,1.6rem + 3vw,3rem);
+  --t2:1.25rem;
+  --t3:1rem;
+  --t4:.9rem;
+  --t5:.8rem;
+  --lh:1.8;            /* 本文の行間 */
+  --lh-tight:1.3;      /* 題名・見出し */
+  --lh-ctl:1.2;        /* ボタン・札の中の行の高さ(文字のずれを書体に頼らない・2026-11-04) */
+  --measure:38em;
+  --track-en:0;
+
+  /* 余白 */
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;
+  --gut:16px;          /* 画面の左右 */
+  --card-pad:0px;      /* 本文の内側(紙のカードにしない) */
+  --sec-gap:40px;      /* 節と節のあいだ */
+  --ex-gap:var(--s3);  /* 例文と例文のあいだ */
+  --sense-gap:var(--s4);/* 語義と語義のあいだ */
+
+  /* 角・線 */
+  --r-s:2px;--r:3px;--r-l:4px;--r-pill:3px;
+  --bw:1px;--bw-2:2px;--hair:1px;
+  --ul:2px;
+
+  /* 紙の形(辞書では使わない。印刷と古い部品のために残す) */
+  --hole:0px;
+  --hole-gap:30px;
+  --ear:0px;--ear-angle:225deg;
+  --tab-h:34px;
+  --page-max:720px;    /* 本文の幅(PC) */
+  --wide-max:1040px;   /* ヘッダー・トップの幅(PC) */
+  --tap:44px;          /* 押せる所の最小 */
+  --tap-s:36px;        /* 小さめのボタン(読み上げ)。押せる幅は --tap を保つ */
+  --icon:22px;--icon-l:56px;
+  --fig-max:360px;
+  --photo-h:180px;
+  --photo-h-word:120px;
+  --photo-h-col:110px;
+  --flip-h:220px;
+
+  /* 動き(押したときの反応だけ) */
+  --dur:120ms;--dur-flip:420ms;--ease:cubic-bezier(.2,.7,.2,1);
+  --flip-turn:180deg;--tilt-a:0deg;--tilt-b:0deg;--tilt-c:0deg;
+  --tape-op:0;--dim-op:.45;
+  --bub-max:90%;
+  --ans-cols:4;
+  --list-cols:2;
+
+  /* 印刷(A4) */
+  --print-paper:#FFFFFF;--print-ink:#000000;
+  --a4-w:210mm;--a4-h:297mm;--print-m:12mm;--print-t:10.5pt;--print-t-s:9pt;--print-t-l:15pt;--print-row:9mm;--qr:22mm;
+  --z-head:10;--z-top:20;
+}
+@media (min-width:768px){
+  :root{--gut:32px;--sec-gap:48px;--photo-h:220px;--photo-h-word:200px;--photo-h-col:200px}
+}
+/* 暗い表示: ヘッダーのボタンで選んだときだけ。強調の色は looks/<案>.css が上書きする */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --desk:#141618;--desk-ink:#ECEDEE;--desk-ink2:#B9BEC3;
+  --paper:#141618;--surface:#1F2225;--ink:#ECEDEE;--ink2:#B9BEC3;--rule:#3A3F44;--rule-strong:#ECEDEE;
+  --acc:#A9C1E6;--acc-soft:#22303F;--mark:#22303F;--on-acc:#10161D;
+  --bub-a:#1F2225;--bub-b:#1F2225;--ok:#8FD1A8;--ng:#F0A27A;--shade:rgba(0,0,0,.5);
+  --link:var(--acc);--btn:var(--acc);--on-btn:var(--on-acc);--sec-head:var(--acc);--tint:var(--acc-soft);--focus:var(--acc);
+  --hand:var(--ink2);--fig:var(--ink2);--fig-fill:var(--surface);--chip-line:var(--ink);--deco:var(--rule);--field-line:var(--ink2);
+}
+@media (prefers-reduced-motion:reduce){:root{--dur:0ms;--dur-flip:0ms}}
+
+/* 案 C: 深緑・辞書のように詰める(2026-11-04)。tokens.css の後ろに付けて、強調の色と詰まり方だけを上書きする */
+:root{
+  --acc:#1D4A37;--acc-soft:#E7EFEA;--mark:#E7EFEA;
+  --t1:clamp(2rem,1.5rem + 2.4vw,2.6rem);--t2:1.1rem;--t3:.95rem;--t4:.85rem;--t5:.78rem;
+  --lh:1.65;--lh-tight:1.25;--sec-gap:28px;--sense-gap:var(--s2);--ex-gap:var(--s1);
+}
+@media (min-width:768px){:root{--sec-gap:36px}}
+:root[data-theme="dark"]{--acc:#9ED2B5;--acc-soft:#1F3329;--mark:#1F3329;--on-acc:#0F1A14}
