@@ -1,0 +1,135 @@
+/* 見た目の値は、このファイルだけに置く(色・書体・文字の大きさ・行間・余白・角の丸み・影・線・動き・紙の大きさ)。
+   ほかの CSS は var(--…) で参照するだけで、色や大きさを直接書かない(tools/check.py で検査する)。
+   土台: B1 単語帳カード × Memoreo の青緑。
+   既定は明るい表示。暗い表示はヘッダーのボタンで選んだときだけ(OS の設定には従わない・2026-10-27)。
+   強調の青緑を使うのは、見出しのタブ・ボタン・リンクだけ。ほかの CSS は下の「役割」の名前で参照する */
+:root{
+  color-scheme:light;
+  /* 色(明るい表示)— 案 C: ボタンは明るいミント・リンクは濃いめの青緑(2026-10-27 ユーザーが選んだ) */
+  --desk:#F6F8F7;          /* 紙を置く机(ほぼ白) */
+  --desk-ink:#2B302F;      /* 机の上の文字(ヘッダー・フッター) */
+  --desk-ink2:#5A6260;
+  --paper:#FFFFFF;         /* 紙のカード */
+  --surface:#F1F4F3;       /* 紙の上の囲み */
+  --ink:#2B302F;           /* 本文(濃い灰色。真っ黒にしない) */
+  --ink2:#5A6260;          /* 補足 */
+  --rule:#DDE3E1;          /* 線・罫線(文字には使わない) */
+  --acc:#0B7568;           /* 強調の青緑(リンク・見出しのタブの線) */
+  --acc-soft:#DDF6F0;      /* 強調の薄い地(見出しのタブ・押す所に乗ったとき) */
+  --mark:#C2F2E5;          /* 蛍光ペン */
+  --on-acc:#FFFFFF;        /* 強調の上の文字 */
+  --bub-a:#F1F4F3;         /* 吹き出し A(左) */
+  --bub-b:#EAF0F5;         /* 吹き出し B(右) */
+  --ok:#0B7568;            /* クイズの正解 */
+  --ng:#8A3B12;            /* クイズの不正解(本文で 4.5:1 以上) */
+  --shade:rgba(0,0,0,.18);
+  /* 役割: 強調の青緑はタブ・ボタン・リンクだけ。札・手書きの見出し・絵・飾りの線は灰 */
+  --link:var(--acc);
+  --btn:#46CBB4;--on-btn:#1A2E2B;   /* ボタンの地と字(字は濃い色で 7:1) */
+  --tab:var(--acc-soft);
+  --tint:var(--acc-soft);
+  --focus:var(--acc);
+  --hand:var(--ink2);      /* 手書き風の小見出し・番号 */
+  --fig:var(--ink2);       /* 絵の 2 本目の線 */
+  --fig-fill:var(--surface);
+  --chip:var(--surface);   /* 品詞などの札 */
+  --deco:var(--rule);      /* 飾りの線 */
+  --field-line:var(--ink2);/* 入力欄の枠 */
+  /* 影: 薄く 1 段だけ */
+  --sh:0 1px 3px rgba(16,24,22,.08);
+  --sh-near:var(--sh);
+  --paper-sh:var(--sh);
+  --paper-sh-s:var(--sh);
+  --stack-sh:0 0 0 var(--bw) var(--rule);
+
+  /* 書体 */
+  --f-body:"Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  --f-head:"Zen Maru Gothic","Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  --f-hand:"Caveat","Klee One",var(--f-head);
+  --f-en:"Avenir Next","Segoe UI","Helvetica Neue",system-ui,sans-serif;
+  --w-reg:500;--w-bold:700;--w-hand:600;
+
+  /* 文字の大きさ(5 段だけ): 題名 / 節の見出し・一言の意味 / 本文 / 補足・メニュー / 注記・パンくず */
+  --t1:clamp(2.1rem,1.5rem + 3vw,2.9rem);
+  --t2:1.375rem;
+  --t3:1.0625rem;
+  --t4:.95rem;
+  --t5:.85rem;
+  --lh:1.8;            /* 本文の行間 */
+  --lh-tight:1.3;      /* 題名・見出し */
+  --measure:36em;      /* 1 行 36 字 */
+  --track-en:.01em;
+
+  /* 余白 */
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;
+  --gut:16px;          /* 画面の左右 */
+  --card-pad:20px;     /* 紙の内側 */
+  --sec-gap:44px;      /* 節と節のあいだ */
+
+  /* 角・線 */
+  --r-s:6px;--r:12px;--r-l:18px;--r-pill:999px;
+  --bw:1.5px;--bw-2:2.5px;--hair:1px;
+  --ul:3px;            /* 手書き風の下線の太さ */
+
+  /* 紙の形 */
+  --hole:12px;         /* 輪の穴の直径 */
+  --hole-gap:30px;     /* 穴の間隔 */
+  --ear:22px;--ear-angle:225deg;          /* カードの角の折り返し */
+  --tab-h:34px;
+  --page-max:760px;    /* 紙 1 枚の幅(PC) */
+  --wide-max:1120px;   /* 机の幅(PC) */
+  --tap:44px;          /* 押せる所の最小 */
+  --icon:22px;--icon-l:56px;
+  --fig-max:420px;
+  --photo-h:200px;
+  --photo-h-word:120px;  /* 単語は札を 1 行にして、スマホの最初の画面に絵まで収める */
+  --photo-h-col:110px;   /* コラムは題名が長いので、スマホでは絵を低くして最初の画面に収める */
+  --flip-h:220px;
+
+  /* 動き(ふわっと出る動きは使わない。押したときの反応とカードをめくる動きだけ) */
+  --dur:160ms;--dur-flip:420ms;--ease:cubic-bezier(.2,.7,.2,1);
+  --flip-turn:180deg;--tilt-a:-3deg;--tilt-b:2deg;--tilt-c:-1.5deg;   /* カードを裏返す角度・テープと重ねたカードの傾き */
+  --tape-op:.75;--dim-op:.45;   /* テープの透け・使えない頭文字の薄さ */
+  --bub-max:90%;                /* 吹き出しの最大の幅 */
+  --ans-cols:4;                 /* プリントのこたえの段数 */
+  --list-cols:2;                /* PC 幅の一覧の段数 */
+
+  /* 印刷(A4) */
+  --print-paper:#FFFFFF;--print-ink:#000000;
+  --a4-w:210mm;--a4-h:297mm;--print-m:12mm;--print-t:10.5pt;--print-t-s:9pt;--print-t-l:15pt;--print-row:9mm;--qr:22mm;
+  --z-head:10;--z-top:20;
+}
+@media (min-width:768px){
+  :root{--gut:28px;--card-pad:40px;--sec-gap:56px;--photo-h:240px;--photo-h-word:240px;--photo-h-col:240px}
+}
+/* 暗い表示: ヘッダーのボタンで選んだときだけ。役割の名前もここで明るい表示の値を上書きする */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --desk:#0F1C1A;--desk-ink:#E9E3D6;--desk-ink2:#B5C2BD;
+  --paper:#22211E;--surface:#2B2925;--ink:#EEE8DC;--ink2:#C4BBAD;--rule:#4B463F;
+  --acc:#86D9C3;--acc-soft:#1E3B35;--mark:#1F5E4E;--on-acc:#10201C;
+  --bub-a:#302E29;--bub-b:#2A3038;--ok:#86D9C3;--ng:#F0A27A;--shade:rgba(0,0,0,.5);
+  --link:var(--acc);--btn:var(--acc);--on-btn:var(--on-acc);--tab:var(--acc-soft);--tint:var(--acc-soft);--focus:var(--acc);
+  --hand:var(--ink2);--fig:var(--ink2);--fig-fill:var(--surface);--chip:var(--surface);--deco:var(--rule);--field-line:var(--ink2);
+  --sh:0 1px 3px rgba(0,0,0,.5);
+}
+@media (prefers-reduced-motion:reduce){:root{--dur:0ms;--dur-flip:0ms}}
+/* ==== v2 追加(統合版の見本・2026-11-13・gen_v2css.py が書く) ==== */
+/* 辞書の並び(dict20k)の規則が使う名前を、公開版の見た目の値に読み替える */
+:root{
+  --rule-strong:var(--rule);
+  --hl:var(--mark);
+  --sec-head:var(--ink);
+  --chip-line:transparent;
+  --f-word:var(--f-en);
+  --f-mincho:var(--f-head);
+  --w-word:var(--w-bold);
+  --lh-ctl:1.2;
+  --ex-gap:var(--s3);
+  --sense-gap:var(--s3);
+  --tap-s:36px;
+}
+:root[data-theme="dark"]{--rule-strong:var(--rule);--hl:var(--mark);--sec-head:var(--ink);--chip-line:transparent}
+/* ==== v2 追加ここまで ==== */
+
+/* 統合版の見本 v2(2026-11-13): 今の公開版(soft-launch)の見た目をそのまま使う。上書きは無し(値は tokens.css) */
